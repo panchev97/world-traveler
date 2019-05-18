@@ -1,26 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Header from './components/header';
+import Footer from './components/footer';
+
+// Main App Class
+class WorldTraveler extends Component {
+  render () {
+    return (
+      // Load components here
+      <div className='App'>
+        <Header />
+        <Footer />
+      </div>
+    )
+  }
 }
 
-export default App;
+export default WorldTraveler;
