@@ -24,7 +24,7 @@ class Continents extends Component {
         } else {
             return data.continents.map(continent => {
                 return (
-                    <li className='list-group-item'>
+                    <li key={continent.name} className='list-group-item'>
                         {continent.name} <span className='badge badge-primary badge-pill'>{continent.code}</span>
                     </li>
                 )
