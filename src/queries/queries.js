@@ -1,5 +1,14 @@
 import { gql } from 'apollo-boost';
 
+const pullContinentsQuery = gql`
+    {
+        continents {
+            name
+            code
+        }
+    }
+`
+
 const pullContinentInfoQuery = gql`
     query($code: String) {
         continent(code: $code) {
@@ -12,4 +21,4 @@ const pullContinentInfoQuery = gql`
     }
 `
 
-export {pullContinentInfoQuery};
+export {pullContinentsQuery, pullContinentInfoQuery};

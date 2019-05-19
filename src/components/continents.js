@@ -1,17 +1,8 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
-import { gql } from 'apollo-boost';
 import Loading from './loading';
 import Continent from './continent';
-
-const pullContinentsQuery = gql`
-    {
-        continents {
-            name
-            code
-        }
-    }
-` 
+import { pullContinentsQuery } from '../queries/queries';
 
 class Continents extends Component {
     constructor (props) {

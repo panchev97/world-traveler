@@ -5,7 +5,6 @@ import { pullContinentInfoQuery } from '../queries/queries';
 class Continent extends Component {
   displayContinentDetails() {
     let continent = this.props.data.continent;
-    console.log(continent);
     if (continent) {
       return (
         <div className="container-fluid">
