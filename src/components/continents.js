@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 import { gql } from 'apollo-boost';
 import Loading from './loading';
+import Continent from './continent';
 
 const pullContinentsQuery = gql`
     {
@@ -16,10 +17,9 @@ class Continents extends Component {
     constructor (props) {
         super(props);
 
-        this.onContinentClick = this.onContinentClick.bind(this);
-    }
-    onContinentClick(name) {
-        console.log(name);
+        this.state = {
+            selected: null
+        }
     }
     displayContinents() {
         let data = this.props.data;
@@ -30,7 +30,7 @@ class Continents extends Component {
                 return (
                     <li key={continent.name} className='list-group-item'>
                         {continent.name} <span className='badge badge-primary badge-pill'>{continent.code} </span>
-                        <a href='#' onClick={this.onContinentClick.bind(null, continent.name)} className='btn btn-outline-info ml-5'>Continent Info</a>
+                        <a href='#' onClick={(e) => {this.setState({selected: continent.code})}} className='btn btn-outline-info ml-5'>Select Continent</a>
                     </li>
                 )
             });
@@ -39,6 +39,7 @@ class Continents extends Component {
     render() {
         return (
             <div className='container'>
+                <Continent code={this.state.selected} />
               <ul className='list-group list-group-flush'>
                   {this.displayContinents()}
                 </ul>
