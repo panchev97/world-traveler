@@ -14,7 +14,7 @@ class Continents extends Component {
     }
     displayContinents() {
         let data = this.props.data;
-        if (data.loading === true) {
+        if (data.loading) {
             return (<Loading />)
         } else {
             return data.continents.map(continent => {

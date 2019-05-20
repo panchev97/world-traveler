@@ -16,9 +16,22 @@ const pullContinentInfoQuery = gql`
             name
             countries {
                 name
+                code
             }
         }
     }
 `
 
-export {pullContinentsQuery, pullContinentInfoQuery};
+const pullCountryInfoQuery = gql`
+    query($code: String) {
+        country(code: $code) {
+            code
+            name
+            native
+            phone
+            currency
+        }
+    }
+`
+
+export {pullContinentsQuery, pullContinentInfoQuery, pullCountryInfoQuery};

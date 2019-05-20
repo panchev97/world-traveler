@@ -1,8 +1,19 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 import { pullContinentInfoQuery } from '../queries/queries';
+import Country from './country';
+import { pullCountryInfoQuery } from '../queries/queries';
+
+
 
 class Continent extends Component {
+    constructor (props) {
+      super(props);
+
+      this.state = {
+          selected: null
+      }
+  }
   displayContinentDetails() {
     let continent = this.props.data.continent;
     if (continent) {
@@ -14,7 +25,11 @@ class Continent extends Component {
               </div>
 
               {continent.countries.map(country => {
-                    return <div key={country.name} className='col-md-3 bg-default'>{country.name}</div>
+                    return ( 
+                    <div key={country.name} className='col-md-2 bg-default list-group-item list-group-item-action mt-1 ml-1 mb-1 mr-1 list-group-item-default'>
+                        {country.name}
+                        <a href='#' onClick={(e) => {this.setState({selected: country.code})}} className='btn btn-block btn-info align-bottom'>Country Details</a>
+                    </div>)
                   })}
           </div>
         </div>
@@ -32,6 +47,7 @@ class Continent extends Component {
     render() {
         return (
             <div className='Continent'>
+              <Country code={this.state.selected} />
               {this.displayContinentDetails()}      
             </div>
         )
